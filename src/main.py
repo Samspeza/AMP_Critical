@@ -30,9 +30,9 @@ y_pred_rf = model_rf.predict(X_test)
 def avaliar(y_true, y_pred, nome_modelo):
     print(f"\nModelo: {nome_modelo}")
     print("RMSE:", np.sqrt(mean_squared_error(y_true, y_pred)))
-    print("R�:", r2_score(y_true, y_pred))
+    print("R:", r2_score(y_true, y_pred))
 
-avaliar(y_test, y_pred_lr, "Regress�o Linear")
+avaliar(y_test, y_pred_lr, "Regressão Linear")
 avaliar(y_test, y_pred_rf, "Random Forest")
 
 # --- Identificação de Regiões Críticas ---
@@ -47,7 +47,7 @@ critical_points["is_critical"] = abs(residuals) >= threshold
 # --- Visualização das Regioes Criticas ---
 plt.figure(figsize=(10,6))
 sns.scatterplot(data=critical_points, x="feature1", y="feature2", hue="is_critical", palette={True: 'red', False: 'blue'})
-plt.title("Regi�es Cr�ticas com base no erro do modelo Random Forest")
+plt.title("Regiões Críticas com base no erro do modelo Random Forest")
 plt.xlabel("feature1")
 plt.ylabel("feature2")
 plt.show()
